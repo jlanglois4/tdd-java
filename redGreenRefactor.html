@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body {
+            font-family: "Bebas Neue",serif;
+            font-size: 48px;
+            background-color: antiquewhite;
+            text-align: center;
+        }
+
+        td {
+            width: 150px;
+            height: 75px;
+            text-align: center;
+            padding: 10px;
+        }
+
+        td:hover {
+            cursor: pointer;
+        }
+
+        td span {
+            font-family: "Arial Narrow",sans-serif;
+            font-size: 16px;
+            display: block;
+        }
+
+        .red {
+            background-color: red;
+            color: black;
+            border: 5px solid red;
+        }
+
+        .green {
+            background-color: green;
+            color: black;
+            border: 5px solid green;
+        }
+
+        .commit {
+            font-size: 36px;
+            background-color: black;
+            color: beige;
+        }
+
+        .refactor {
+            background-color: dodgerblue;
+            color: black;
+            border: 5px solid dodgerblue;
+        }
+
+        .current {
+            border: 5px solid dimgrey;
+            font-weight: bold;
+            color: beige;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <title>Red Green Refactor</title>
+</head>
+<body>
+    <table class="table">
+        <tr>
+            <td class="red">
+                Red
+                <span>Write failing unit test</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="green">
+                Green
+                <span>Write enough code to make failing test pass</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="commit">
+                Commit!
+            </td>
+        </tr>
+        <tr>
+            <td class="refactor">
+                Refactor
+                <span>Remove duplicate code</span>
+            </td>
+        </tr>
+    </table>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function() {
+            $("td").on("click", function() {
+                let td = $(this);
+                if (!td.hasClass("commit")) {
+                    $("td").removeClass("current");
+                    $(this).addClass("current");
+                }
+            });
+        })
+    </script>
+</body>
+</html>
