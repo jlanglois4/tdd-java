@@ -47,7 +47,7 @@ public class YahtzeeTest {
 
         hand = new Hand(die1, die2, die3, die4, die5);
 
-        assertEquals("Large Straight", hand.fourOfAKind());
+        assertEquals("Four of a Kind", hand.fourOfAKind());
     }
 
     @Test
@@ -60,7 +60,7 @@ public class YahtzeeTest {
 
         hand = new Hand(die1, die2, die3, die4, die5);
 
-        assertNotEquals("Large Straight", hand.fourOfAKind());
+        assertNotEquals("Four of a Kind", hand.fourOfAKind());
     }
 
     @Test
@@ -73,7 +73,7 @@ public class YahtzeeTest {
 
         hand = new Hand(die1, die2, die3, die4, die5);
 
-        assertNotEquals("Large Straight", hand.fourOfAKind());
+        assertNotEquals("Four of a Kind", hand.fourOfAKind());
     }
 
     @Test
@@ -86,7 +86,7 @@ public class YahtzeeTest {
 
         hand = new Hand(die1, die2, die3, die4, die5);
 
-        assertEquals("Small Straight", hand.threeOfAKind());
+        assertEquals("Three of a Kind", hand.threeOfAKind());
     }
 
     @Test
@@ -138,7 +138,7 @@ public class YahtzeeTest {
 
         hand = new Hand(die1, die2, die3, die4, die5);
 
-        assertNotEquals("Two Pair", hand.twoPair());
+        assertEquals("Two Pair", hand.twoPair());
     }
 
     @Test
@@ -172,8 +172,8 @@ public class YahtzeeTest {
         Die die1 = new Die(6);
         Die die2 = new Die(3);
         Die die3 = new Die(3);
-        Die die4 = new Die(2);
-        Die die5 = new Die(1);
+        Die die4 = new Die(6);
+        Die die5 = new Die(6);
 
         hand = new Hand(die1, die2, die3, die4, die5);
 
@@ -190,7 +190,7 @@ public class YahtzeeTest {
 
         hand = new Hand(die1, die2, die3, die4, die5);
 
-        assertEquals("One of a Kind", hand.oneOfAKind());
+        assertEquals("Large Straight", hand.oneOfAKind());
     }
 
     @Test
@@ -203,6 +203,6 @@ public class YahtzeeTest {
 
         hand = new Hand(die1, die2, die3, die4, die5);
 
-        assertNotEquals("One of a Kind", hand.oneOfAKind());
+        assertNotEquals("Large Straight", hand.oneOfAKind());
     }
 }

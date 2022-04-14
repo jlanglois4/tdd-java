@@ -6,16 +6,16 @@ import java.util.List;
 
 public class Hand {
 
-    private List<Die> hand = new ArrayList<>();
+    private final List<Die> hand = new ArrayList<>();
 
-    private String[] returnString = {
+    private final String[] returnString = {
             "Yahtzee",
-            "Large Straight",
-            "Small Straight",
+            "Four of a Kind",
+            "Three of a Kind",
             "Full House",
             "Two Pair",
             "One Pair",
-            "One of a Kind"
+            "Large Straight"
     };
 
 
@@ -44,7 +44,7 @@ public class Hand {
         return matches;
     }
 
-    private Integer getCount(int totalDiceMatchesNeeded) {
+    private Integer getMatches(int totalDiceMatchesNeeded) {
         int count = 0;
         for (Integer i : getMatches()) {
             if (i == totalDiceMatchesNeeded) {
@@ -56,7 +56,7 @@ public class Hand {
 
     public String fiveOfAKind() {
         int totalDiceMatchesNeeded = 5;
-        if (getCount(totalDiceMatchesNeeded) == 1) {
+        if (getMatches(totalDiceMatchesNeeded) == 1) {
             return returnString[0];
         } else {
             return "";
@@ -65,7 +65,7 @@ public class Hand {
 
     public String fourOfAKind() {
         int totalDiceMatchesNeeded = 4;
-        if (getCount(totalDiceMatchesNeeded) == 1) {
+        if (getMatches(totalDiceMatchesNeeded) == 1) {
             return returnString[1];
         } else {
             return "";
@@ -74,7 +74,7 @@ public class Hand {
 
     public String threeOfAKind() {
         int totalDiceMatchesNeeded = 3;
-        if (getCount(totalDiceMatchesNeeded) == 1) {
+        if (getMatches(totalDiceMatchesNeeded) == 1) {
             return returnString[2];
         } else {
             return "";
@@ -82,8 +82,9 @@ public class Hand {
     }
 
     public String fullHouse() {
-        int totalDiceMatchesNeeded = 2;
-        if (getCount(totalDiceMatchesNeeded) == 1) {
+        int firstDiceMatchNeeded = 2;
+        int secondDiceMatchNeeded = 3;
+        if (getMatches(firstDiceMatchNeeded) == 1 && getMatches(secondDiceMatchNeeded) == 1) {
             return returnString[3];
         } else {
             return "";
@@ -91,8 +92,9 @@ public class Hand {
     }
 
     public String twoPair() {
-        int totalDiceMatchesNeeded = 1;
-        if (getCount(totalDiceMatchesNeeded) == 1) {
+        int firstDiceMatchNeeded = 2;
+        int secondDiceMatchNeeded = 3;
+        if (getMatches(firstDiceMatchNeeded) == 2 || getMatches(secondDiceMatchNeeded) == 1) {
             return returnString[4];
         } else {
             return "";
@@ -100,9 +102,8 @@ public class Hand {
     }
 
     public String onePair() {
-        var integers = getMatches();
-        integers.removeIf(i -> i == 0);
-        if (integers.size() == 4) {
+        int totalDiceMatchesNeeded = 2;
+        if (getMatches(totalDiceMatchesNeeded) == 1) {
             return returnString[5];
         } else {
             return "";
@@ -110,9 +111,8 @@ public class Hand {
     }
 
     public String oneOfAKind() {
-        var integers = getMatches();
-        integers.removeIf(i -> i == 0);
-        if (integers.size() == 5) {
+        int totalDiceMatchesNeeded = 2;
+        if (getMatches(totalDiceMatchesNeeded) == 0) {
             return returnString[6];
         } else {
             return "";
