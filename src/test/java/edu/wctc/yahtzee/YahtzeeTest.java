@@ -166,4 +166,30 @@ public class YahtzeeTest {
 
         assertNotEquals("One Pair", hand.onePair());
     }
+
+    @Test
+    void onePairTestThree(){
+        Die die1 = new Die(6);
+        Die die2 = new Die(3);
+        Die die3 = new Die(3);
+        Die die4 = new Die(2);
+        Die die5 = new Die(1);
+
+        hand = new Hand(die1, die2, die3, die4, die5);
+
+        assertNotEquals("One Pair", hand.onePair());
+    }
+
+    @Test
+    void oneOfAKindTestOne(){
+        Die die1 = new Die(6);
+        Die die2 = new Die(4);
+        Die die3 = new Die(3);
+        Die die4 = new Die(2);
+        Die die5 = new Die(1);
+
+        hand = new Hand(die1, die2, die3, die4, die5);
+
+        assertEquals("One of a Kind", hand.oneOfAKind());
+    }
 }

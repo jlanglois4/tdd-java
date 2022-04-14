@@ -1,5 +1,6 @@
 package edu.wctc.Yahtzee;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -7,6 +8,18 @@ import java.util.List;
 public class Hand {
 
     private List<Die> hand = new ArrayList<>();
+
+    private String[] returnString = {
+            "Yahtzee",
+            "Large Straight",
+            "Small Straight",
+            "Full House",
+            "Two Pair",
+            "One Pair",
+            "One of a Kind"
+    } ;
+
+
 
     public Hand(Die die1, Die die2, Die die3, Die die4, Die die5) {
         hand.add(die1);
@@ -60,7 +73,7 @@ public class Hand {
     public String fiveOfAKind() {
         int totalDiceMatchesNeeded = 5;
         if (getCount(totalDiceMatchesNeeded) == 1) {
-            return "Yahtzee";
+            return returnString[0];
         } else {
             return "";
         }
@@ -69,7 +82,7 @@ public class Hand {
     public String fourOfAKind() {
         int totalDiceMatchesNeeded = 4;
         if (getCount(totalDiceMatchesNeeded) == 1) {
-            return "Large Straight";
+            return returnString[1];
         } else {
             return "";
         }
@@ -78,7 +91,7 @@ public class Hand {
     public String threeOfAKind() {
         int totalDiceMatchesNeeded = 3;
         if (getCount(totalDiceMatchesNeeded) == 1) {
-            return "Small Straight";
+            return returnString[2];
         } else {
             return "";
         }
@@ -87,7 +100,7 @@ public class Hand {
     public String fullHouse() {
         int totalDiceMatchesNeeded = 2;
         if (getCount(totalDiceMatchesNeeded) == 1) {
-            return "Full House";
+            return returnString[3];
         } else {
             return "";
         }
@@ -96,7 +109,7 @@ public class Hand {
     public String twoPair() {
         int totalDiceMatchesNeeded = 1;
         if (getCount(totalDiceMatchesNeeded) == 1) {
-            return "Two Pair";
+            return returnString[4];
         } else {
             return "";
         }
@@ -104,8 +117,16 @@ public class Hand {
 
     public String onePair() {
         int totalDiceMatchesNeeded = -1;
-        if (getCount(totalDiceMatchesNeeded) == 1 && getMatches().size() != 5 ) {
-            return "One Pair";
+        if (getCount(totalDiceMatchesNeeded) == 1/* && getMatches().size() != 6 */) {
+            return returnString[5];
+        } else {
+            return "";
+        }
+    }
+
+    public String oneOfAKind() {
+        if (getMatches().size() == 6 ) {
+            return returnString[6];
         } else {
             return "";
         }
