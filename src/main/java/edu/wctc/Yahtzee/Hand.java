@@ -1,6 +1,7 @@
 package edu.wctc.Yahtzee;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -55,5 +56,38 @@ public class Hand {
         }
     }
 
+    public String fullHouse() {
 
+        var diceValues = getDieNum();
+
+
+        var ones = Collections.frequency(diceValues, 1);
+        var twos = Collections.frequency(diceValues, 2);
+        var threes = Collections.frequency(diceValues, 3);
+        var fours = Collections.frequency(diceValues, 4);
+        var fives = Collections.frequency(diceValues, 5);
+        var sixes = Collections.frequency(diceValues, 6);
+
+        List<Integer> matches = new ArrayList<>();
+        matches.add(ones);
+        matches.add(twos);
+        matches.add(threes);
+        matches.add(fours);
+        matches.add(fives);
+        matches.add(sixes);
+
+        var fullHouseValues = matches.stream().distinct().collect(Collectors.toList());
+
+        for (Integer i : fullHouseValues) {
+            if (i == 0){
+                fullHouseValues.remove(i);
+            }
+        }
+
+        if ((fullHouseValues.get(0) == 2 || fullHouseValues.get(0) == 3) && (fullHouseValues.get(1) == 2 || fullHouseValues.get(1) == 3)) {
+            return "Full House";
+        } else {
+            return "";
+        }
+    }
 }
