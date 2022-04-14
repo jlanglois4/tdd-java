@@ -14,7 +14,7 @@ public class YahtzeeTest {
 
     @BeforeEach
     void setUp() {
-        die = new Die(4);
+        die = new Die((int) ((Math.random() * 6) + 1));
     }
 
     @RepeatedTest(100)
@@ -24,7 +24,7 @@ public class YahtzeeTest {
     }
 
     @Test
-    void fiveOfAKind() {
+    void fiveOfAKindTestOne() {
         //Tested with five dice with all unique values
         Die die1 = new Die(1);
         Die die2 = new Die(1);
@@ -38,7 +38,7 @@ public class YahtzeeTest {
     }
 
     @Test
-    void fourOfAKind(){
+    void fourOfAKindTestOne(){
         Die die1 = new Die(1);
         Die die2 = new Die(1);
         Die die3 = new Die(1);
@@ -77,7 +77,7 @@ public class YahtzeeTest {
     }
 
     @Test
-    void threeOfAKind(){
+    void threeOfAKindTestOne(){
         Die die1 = new Die(1);
         Die die2 = new Die(1);
         Die die3 = new Die(1);
@@ -90,7 +90,7 @@ public class YahtzeeTest {
     }
 
     @Test
-    void fullHouse(){
+    void fullHouseTestOne(){
         Die die1 = new Die(1);
         Die die2 = new Die(1);
         Die die3 = new Die(1);
@@ -103,7 +103,7 @@ public class YahtzeeTest {
     }
 
     @Test
-    void fullHouseTwo(){
+    void fullHouseTestTwo(){
         Die die1 = new Die(3);
         Die die2 = new Die(2);
         Die die3 = new Die(2);
@@ -116,7 +116,7 @@ public class YahtzeeTest {
     }
 
     @Test
-    void twoPair(){
+    void twoPairTestOne(){
         Die die1 = new Die(3);
         Die die2 = new Die(2);
         Die die3 = new Die(2);
@@ -126,5 +126,44 @@ public class YahtzeeTest {
         hand = new Hand(die1, die2, die3, die4, die5);
 
         assertEquals("Two Pair", hand.twoPair());
+    }
+
+    @Test
+    void twoPairTestTwo(){
+        Die die1 = new Die(6);
+        Die die2 = new Die(6);
+        Die die3 = new Die(6);
+        Die die4 = new Die(1);
+        Die die5 = new Die(1);
+
+        hand = new Hand(die1, die2, die3, die4, die5);
+
+        assertNotEquals("Two Pair", hand.twoPair());
+    }
+
+    @Test
+    void onePairTestOne(){
+        Die die1 = new Die(6);
+        Die die2 = new Die(2);
+        Die die3 = new Die(3);
+        Die die4 = new Die(1);
+        Die die5 = new Die(1);
+
+        hand = new Hand(die1, die2, die3, die4, die5);
+
+        assertNotEquals("One Pair", hand.onePair());
+    }
+
+    @Test
+    void onePairTestTwo(){
+        Die die1 = new Die(6);
+        Die die2 = new Die(4);
+        Die die3 = new Die(3);
+        Die die4 = new Die(2);
+        Die die5 = new Die(1);
+
+        hand = new Hand(die1, die2, die3, die4, die5);
+
+        assertNotEquals("One Pair", hand.onePair());
     }
 }
