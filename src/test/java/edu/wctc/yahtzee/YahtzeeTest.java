@@ -66,7 +66,7 @@ public class YahtzeeTest {
         assertNotEquals("Large Straight", hand.fourOfAKind());
     }
 
-    /*@Test
+    @Test
     void fourOfAKindTestThree(){
         Die die1 = new Die(1);
         Die die2 = new Die(5);
@@ -78,7 +78,7 @@ public class YahtzeeTest {
 
         assertNotEquals("Large Straight", hand.fourOfAKind());
     }
-*/
+
     @Test
     void threeOfAKind(){
         Die die1 = new Die(1);

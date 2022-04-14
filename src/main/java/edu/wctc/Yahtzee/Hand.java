@@ -26,6 +26,18 @@ public class Hand {
         return dieNums;
     }
 
+    private List<Integer> dieNumFrequencies(){
+        List<Integer> matches = new ArrayList<>();
+        for (int i = 1; i <= 6; i++){
+            matches.add(Collections.frequency(getDieNum(), i));
+        }
+
+        var diceValues = matches.stream().distinct().collect(Collectors.toList());
+        diceValues.removeIf(i -> i == 0);
+
+        return diceValues;
+    }
+
     public String fiveOfAKind() {
         var diceValues = getDieNum().stream().distinct().collect(Collectors.toList());
 
@@ -37,15 +49,7 @@ public class Hand {
     }
 
     public String fourOfAKind() {
-        List<Integer> matches = new ArrayList<>();
-        for (int i = 1; i <= 6; i++){
-            matches.add(Collections.frequency(getDieNum(), i));
-        }
-
-        var diceValues = matches.stream().distinct().collect(Collectors.toList());
-        diceValues.removeIf(i -> i == 0);
-
-        if (!((diceValues.get(0) == 2 || diceValues.get(0) == 3) && (diceValues.get(1) == 2 || diceValues.get(1) == 3))) {
+        if (!((dieNumFrequencies().get(0) == 2 || dieNumFrequencies().get(0) == 3) && (dieNumFrequencies().get(1) == 2 || dieNumFrequencies().get(1) == 3))) {
             return "Large Straight";
         } else {
             return "";
@@ -63,19 +67,11 @@ public class Hand {
     }
 
     public String fullHouse() {
-
-        List<Integer> matches = new ArrayList<>();
-        for (int i = 1; i <= 6; i++){
-            matches.add(Collections.frequency(getDieNum(), i));
-        }
-
-        var diceValues = matches.stream().distinct().collect(Collectors.toList());
-        diceValues.removeIf(i -> i == 0);
-
-        if (((diceValues.get(0) == 2 || diceValues.get(0) == 3) && (diceValues.get(1) == 2 || diceValues.get(1) == 3))) {
+        if (((dieNumFrequencies().get(0) == 2 || dieNumFrequencies().get(0) == 3) && (dieNumFrequencies().get(1) == 2 || dieNumFrequencies().get(1) == 3))) {
             return "Full House";
         } else {
             return "";
         }
     }
+
 }
