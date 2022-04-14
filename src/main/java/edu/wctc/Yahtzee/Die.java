@@ -5,11 +5,14 @@ import java.util.List;
 
 public class Die {
 
-    private final int dieNum;
-    private final int maxValue = 6;
+    private int dieNum = 0;
 
-    public Die(){
-        dieNum = (int) ((Math.random() * maxValue) + 1);
+    public Die(int dieNum){
+        int minValue = 1;
+        int maxValue = 6;
+        if((dieNum >= minValue) && (dieNum <= maxValue)){
+            this.dieNum = dieNum;
+        }
     }
 
     public int getDieNum(){
