@@ -1,6 +1,5 @@
 package edu.wctc.Yahtzee;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -17,8 +16,7 @@ public class Hand {
             "Two Pair",
             "One Pair",
             "One of a Kind"
-    } ;
-
+    };
 
 
     public Hand(Die die1, Die die2, Die die3, Die die4, Die die5) {
@@ -38,20 +36,6 @@ public class Hand {
         return dieNums;
     }
 
-   /* private boolean fullHouseOrFourOfAKind() {
-        return ((dieNumFrequencies().get(0) == 2 || dieNumFrequencies().get(0) == 3) && (dieNumFrequencies().get(1) == 2 || dieNumFrequencies().get(1) == 3));
-    }
-
-    private List<Integer> diceValues() {
-        return getDieNum().stream().distinct().collect(Collectors.toList());
-    }
-
-    private List<Integer> dieNumFrequencies() {
-        var integers = getMatches().stream().distinct().collect(Collectors.toList());
-        integers.removeIf(i -> i == 0);
-        return integers;
-    }*/
-
     private List<Integer> getMatches() {
         List<Integer> matches = new ArrayList<>();
         for (int i = 1; i <= 6; i++) {
@@ -60,7 +44,7 @@ public class Hand {
         return matches;
     }
 
-    private Integer getCount(int totalDiceMatchesNeeded){
+    private Integer getCount(int totalDiceMatchesNeeded) {
         int count = 0;
         for (Integer i : getMatches()) {
             if (i == totalDiceMatchesNeeded) {
@@ -116,8 +100,9 @@ public class Hand {
     }
 
     public String onePair() {
-        int totalDiceMatchesNeeded = -1;
-        if (getCount(totalDiceMatchesNeeded) == 1/* && getMatches().size() != 6 */) {
+        var integers = getMatches();
+        integers.removeIf(i -> i == 0);
+        if (integers.size() == 4) {
             return returnString[5];
         } else {
             return "";
@@ -125,13 +110,14 @@ public class Hand {
     }
 
     public String oneOfAKind() {
-        if (getMatches().size() == 6 ) {
+        var integers = getMatches();
+        integers.removeIf(i -> i == 0);
+        if (integers.size() == 5) {
             return returnString[6];
         } else {
             return "";
         }
     }
-
 
 
 }
