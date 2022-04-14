@@ -10,7 +10,7 @@ and tell you what type it is. It should be able to distinguish:
 
 * Five of a kind (Yahtzee) = Five of the same dice
 * Four of a kind (Large Straight) = Four of the same dice
-* Three of a kind = Three of the same dice
+* Three of a kind (Small Straight) = Three of the same dice
 * Full house = Three of the same dice, plus two dice of the same value
 * Two pair = Two sets of the same dice
 * One pair = One set of the same dice

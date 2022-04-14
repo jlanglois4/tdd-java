@@ -35,5 +35,15 @@ public class Hand {
         }
     }
 
+    public String fourOfAKind() {
+        var diceValues = getDieNum().stream().distinct().collect(Collectors.toList());
+
+        if (diceValues.size() == 2) {
+            return "Large Straight";
+        } else {
+            return "";
+        }
+    }
+
 
 }
