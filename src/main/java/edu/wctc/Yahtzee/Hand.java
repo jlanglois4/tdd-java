@@ -37,9 +37,15 @@ public class Hand {
     }
 
     public String fourOfAKind() {
-        var diceValues = getDieNum().stream().distinct().collect(Collectors.toList());
+        List<Integer> matches = new ArrayList<>();
+        for (int i = 1; i <= 6; i++){
+            matches.add(Collections.frequency(getDieNum(), i));
+        }
 
-        if (diceValues.size() == 2) {
+        var diceValues = matches.stream().distinct().collect(Collectors.toList());
+        diceValues.removeIf(i -> i == 0);
+
+        if (!((diceValues.get(0) == 2 || diceValues.get(0) == 3) && (diceValues.get(1) == 2 || diceValues.get(1) == 3))) {
             return "Large Straight";
         } else {
             return "";
@@ -66,7 +72,7 @@ public class Hand {
         var diceValues = matches.stream().distinct().collect(Collectors.toList());
         diceValues.removeIf(i -> i == 0);
 
-        if ((diceValues.get(0) == 2 || diceValues.get(0) == 3) && (diceValues.get(1) == 2 || diceValues.get(1) == 3)) {
+        if (((diceValues.get(0) == 2 || diceValues.get(0) == 3) && (diceValues.get(1) == 2 || diceValues.get(1) == 3))) {
             return "Full House";
         } else {
             return "";
