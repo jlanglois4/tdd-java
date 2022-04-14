@@ -78,4 +78,17 @@ public class YahtzeeTest {
 
         assertEquals("Full House", hand.fullHouse());
     }
+
+    @Test
+    void fullHouseTwo(){
+        Die die1 = new Die(3);
+        Die die2 = new Die(2);
+        Die die3 = new Die(2);
+        Die die4 = new Die(1);
+        Die die5 = new Die(3);
+
+        hand = new Hand(die1, die2, die3, die4, die5);
+
+        assertNotEquals("Full House", hand.fullHouse());
+    }
 }
