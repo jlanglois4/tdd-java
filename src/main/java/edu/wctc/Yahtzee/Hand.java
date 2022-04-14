@@ -45,5 +45,15 @@ public class Hand {
         }
     }
 
+    public String threeOfAKind() {
+        var diceValues = getDieNum().stream().distinct().collect(Collectors.toList());
+
+        if (diceValues.size() == 3) {
+            return "Small Straight";
+        } else {
+            return "";
+        }
+    }
+
 
 }
