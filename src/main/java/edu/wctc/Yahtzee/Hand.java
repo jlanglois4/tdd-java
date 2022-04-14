@@ -26,22 +26,26 @@ public class Hand {
         return dieNums;
     }
 
-    private List<Integer> dieNumFrequencies(){
+    private boolean fullHouseOrFourOfAKind() {
+        return ((dieNumFrequencies().get(0) == 2 || dieNumFrequencies().get(0) == 3) && (dieNumFrequencies().get(1) == 2 || dieNumFrequencies().get(1) == 3));
+    }
+
+    private List<Integer> diceValues() {
+        return getDieNum().stream().distinct().collect(Collectors.toList());
+    }
+
+    private List<Integer> dieNumFrequencies() {
         List<Integer> matches = new ArrayList<>();
-        for (int i = 1; i <= 6; i++){
+        for (int i = 1; i <= 6; i++) {
             matches.add(Collections.frequency(getDieNum(), i));
         }
-
-        var diceValues = matches.stream().distinct().collect(Collectors.toList());
-        diceValues.removeIf(i -> i == 0);
-
-        return diceValues;
+        var integers = matches.stream().distinct().collect(Collectors.toList());
+        integers.removeIf(i -> i == 0);
+        return integers;
     }
 
     public String fiveOfAKind() {
-        var diceValues = getDieNum().stream().distinct().collect(Collectors.toList());
-
-        if (diceValues.size() == 1) {
+        if (diceValues().size() == 1) {
             return "Yahtzee";
         } else {
             return "";
@@ -49,7 +53,7 @@ public class Hand {
     }
 
     public String fourOfAKind() {
-        if (!((dieNumFrequencies().get(0) == 2 || dieNumFrequencies().get(0) == 3) && (dieNumFrequencies().get(1) == 2 || dieNumFrequencies().get(1) == 3))) {
+        if (!fullHouseOrFourOfAKind()) {
             return "Large Straight";
         } else {
             return "";
@@ -57,9 +61,7 @@ public class Hand {
     }
 
     public String threeOfAKind() {
-        var diceValues = getDieNum().stream().distinct().collect(Collectors.toList());
-
-        if (diceValues.size() == 3) {
+        if (diceValues().size() == 3) {
             return "Small Straight";
         } else {
             return "";
@@ -67,8 +69,27 @@ public class Hand {
     }
 
     public String fullHouse() {
-        if (((dieNumFrequencies().get(0) == 2 || dieNumFrequencies().get(0) == 3) && (dieNumFrequencies().get(1) == 2 || dieNumFrequencies().get(1) == 3))) {
+        if (fullHouseOrFourOfAKind()) {
             return "Full House";
+        } else {
+            return "";
+        }
+    }
+
+    public String twoPair() {
+        List<Integer> matches = new ArrayList<>();
+        for (int i = 1; i <= 6; i++) {
+            matches.add(Collections.frequency(getDieNum(), i));
+        }
+            int count = 0;
+        for (Integer i :matches) {
+            if (i == 2){
+                count++;
+            }
+        }
+
+        if (count == 2) {
+            return "Two Pair";
         } else {
             return "";
         }

@@ -6,9 +6,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 public class YahtzeeTest {
@@ -116,5 +113,18 @@ public class YahtzeeTest {
         hand = new Hand(die1, die2, die3, die4, die5);
 
         assertNotEquals("Full House", hand.fullHouse());
+    }
+
+    @Test
+    void twoPair(){
+        Die die1 = new Die(3);
+        Die die2 = new Die(2);
+        Die die3 = new Die(2);
+        Die die4 = new Die(6);
+        Die die5 = new Die(6);
+
+        hand = new Hand(die1, die2, die3, die4, die5);
+
+        assertEquals("Two Pair", hand.twoPair());
     }
 }
