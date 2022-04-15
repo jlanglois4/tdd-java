@@ -7,8 +7,7 @@ import java.util.List;
 public class Hand {
 
     private final List<Die> hand = new ArrayList<>();
-    private boolean OneOfAKind = true;
-    private int diceMatchNeeded = 0;
+    private int diceMatchNeeded;
     private final String[] returnString = {
             "Yahtzee",
             "Four of a Kind",
