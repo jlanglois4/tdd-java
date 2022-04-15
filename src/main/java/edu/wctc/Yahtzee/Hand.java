@@ -16,7 +16,8 @@ public class Hand {
             "Full House",
             "Two Pair",
             "One Pair",
-            "Large Straight"
+            "Large Straight",
+            "Small Straight"
     };
 
 
@@ -116,5 +117,12 @@ public class Hand {
         }
     }
 
+    public String smallStraight() {
+        if ((getMatches(diceMatchNeeded = 2) == 1 && getMatches(diceMatchNeeded = 1) == 3) || getMatches(diceMatchNeeded = 1) == 5) {
+            return returnString[7];
+        } else {
+            return "";
+        }
+    }
 
 }

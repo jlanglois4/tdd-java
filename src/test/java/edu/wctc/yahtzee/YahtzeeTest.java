@@ -204,4 +204,30 @@ public class YahtzeeTest {
 
         assertNotEquals("Large Straight", hand.oneOfAKind());
     }
+
+    @Test
+    void smallStraightTestOne() {
+        Die die1 = new Die(2);
+        Die die2 = new Die(3);
+        Die die3 = new Die(1);
+        Die die4 = new Die(5);
+        Die die5 = new Die(5);
+
+        hand = new Hand(die1, die2, die3, die4, die5);
+
+        assertEquals("Small Straight", hand.smallStraight());
+    }
+
+    @Test
+    void smallStraightTestTwo() {
+        Die die1 = new Die(5);
+        Die die2 = new Die(4);
+        Die die3 = new Die(3);
+        Die die4 = new Die(2);
+        Die die5 = new Die(1);
+
+        hand = new Hand(die1, die2, die3, die4, die5);
+
+        assertEquals("Small Straight", hand.smallStraight());
+    }
 }
