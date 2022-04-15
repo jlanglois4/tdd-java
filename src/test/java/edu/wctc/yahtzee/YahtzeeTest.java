@@ -9,36 +9,35 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class YahtzeeTest {
-    private Die die;
+    private Die die1;
     private Hand hand;
 
     @BeforeEach
     void setUp() {
-        die = new Die((int) ((Math.random() * 6) + 1));
+        die1 = new Die((int) ((Math.random() * 6) + 1));
     }
 
     @RepeatedTest(100)
     void diceReturnsInt() {
-        boolean containsInt = (die.getDieNum() >= 1) && (die.getDieNum() <= 6);
+        boolean containsInt = (die1.getDieNum() >= 1) && (die1.getDieNum() <= 6);
         assertTrue(containsInt);
     }
 
     @Test
     void fiveOfAKindTestOne() {
         //Tested with five dice with all unique values
-        Die die1 = new Die(1);
-        Die die2 = new Die(1);
-        Die die3 = new Die(1);
-        Die die4 = new Die(1);
-        Die die5 = new Die(1);
-
+        Die die1 = new Die(5);
+        Die die2 = new Die(5);
+        Die die3 = new Die(5);
+        Die die4 = new Die(5);
+        Die die5 = new Die(5);
         hand = new Hand(die1, die2, die3, die4, die5);
 
         assertEquals("Yahtzee", hand.fiveOfAKind());
     }
 
     @Test
-    void fourOfAKindTestOne(){
+    void fourOfAKindTestOne() {
         Die die1 = new Die(1);
         Die die2 = new Die(1);
         Die die3 = new Die(1);
@@ -51,7 +50,7 @@ public class YahtzeeTest {
     }
 
     @Test
-    void fourOfAKindTestTwo(){
+    void fourOfAKindTestTwo() {
         Die die1 = new Die(1);
         Die die2 = new Die(1);
         Die die3 = new Die(1);
@@ -64,7 +63,7 @@ public class YahtzeeTest {
     }
 
     @Test
-    void fourOfAKindTestThree(){
+    void fourOfAKindTestThree() {
         Die die1 = new Die(1);
         Die die2 = new Die(5);
         Die die3 = new Die(1);
@@ -77,7 +76,7 @@ public class YahtzeeTest {
     }
 
     @Test
-    void threeOfAKindTestOne(){
+    void threeOfAKindTestOne() {
         Die die1 = new Die(1);
         Die die2 = new Die(1);
         Die die3 = new Die(1);
@@ -90,7 +89,7 @@ public class YahtzeeTest {
     }
 
     @Test
-    void fullHouseTestOne(){
+    void fullHouseTestOne() {
         Die die1 = new Die(1);
         Die die2 = new Die(1);
         Die die3 = new Die(1);
@@ -103,7 +102,7 @@ public class YahtzeeTest {
     }
 
     @Test
-    void fullHouseTestTwo(){
+    void fullHouseTestTwo() {
         Die die1 = new Die(3);
         Die die2 = new Die(2);
         Die die3 = new Die(2);
@@ -116,7 +115,7 @@ public class YahtzeeTest {
     }
 
     @Test
-    void twoPairTestOne(){
+    void twoPairTestOne() {
         Die die1 = new Die(3);
         Die die2 = new Die(2);
         Die die3 = new Die(2);
@@ -129,7 +128,7 @@ public class YahtzeeTest {
     }
 
     @Test
-    void twoPairTestTwo(){
+    void twoPairTestTwo() {
         Die die1 = new Die(6);
         Die die2 = new Die(6);
         Die die3 = new Die(6);
@@ -142,7 +141,7 @@ public class YahtzeeTest {
     }
 
     @Test
-    void onePairTestOne(){
+    void onePairTestOne() {
         Die die1 = new Die(6);
         Die die2 = new Die(2);
         Die die3 = new Die(3);
@@ -155,7 +154,7 @@ public class YahtzeeTest {
     }
 
     @Test
-    void onePairTestTwo(){
+    void onePairTestTwo() {
         Die die1 = new Die(6);
         Die die2 = new Die(4);
         Die die3 = new Die(3);
@@ -168,7 +167,7 @@ public class YahtzeeTest {
     }
 
     @Test
-    void onePairTestThree(){
+    void onePairTestThree() {
         Die die1 = new Die(6);
         Die die2 = new Die(3);
         Die die3 = new Die(3);
@@ -181,7 +180,7 @@ public class YahtzeeTest {
     }
 
     @Test
-    void oneOfAKindTestOne(){
+    void oneOfAKindTestOne() {
         Die die1 = new Die(6);
         Die die2 = new Die(4);
         Die die3 = new Die(3);
@@ -194,12 +193,12 @@ public class YahtzeeTest {
     }
 
     @Test
-    void oneOfAKindTestTwo(){
-        Die die1 = new Die(6);
-        Die die2 = new Die(4);
-        Die die3 = new Die(3);
-        Die die4 = new Die(2);
-        Die die5 = new Die(2);
+    void oneOfAKindTestTwo() {
+        Die die1 = new Die(5);
+        Die die2 = new Die(3);
+        Die die3 = new Die(1);
+        Die die4 = new Die(5);
+        Die die5 = new Die(5);
 
         hand = new Hand(die1, die2, die3, die4, die5);
 
