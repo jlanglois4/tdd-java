@@ -57,7 +57,6 @@ public class Hand {
 
     public String fiveOfAKind() {
         if (getMatches(diceMatchNeeded = 5) == 1) {
-            OneOfAKind = false;
             return returnString[0];
         } else {
             return "";
@@ -66,7 +65,6 @@ public class Hand {
 
     public String fourOfAKind() {
         if (getMatches(diceMatchNeeded = 4) == 1) {
-            OneOfAKind = false;
             return returnString[1];
         } else {
             return "";
@@ -75,7 +73,6 @@ public class Hand {
 
     public String threeOfAKind() {
         if (getMatches(diceMatchNeeded = 3) == 1) {
-            OneOfAKind = false;
             return returnString[2];
         } else {
             return "";
@@ -84,7 +81,6 @@ public class Hand {
 
     public String fullHouse() {
         if (getMatches(diceMatchNeeded = 2) == 1 && getMatches(diceMatchNeeded = 3) == 1) {
-            OneOfAKind = false;
             return returnString[3];
         } else {
             return "";
@@ -93,7 +89,6 @@ public class Hand {
 
     public String twoPair() {
         if (getMatches(diceMatchNeeded = 2) == 2 || getMatches(diceMatchNeeded = 3) == 1) {
-            OneOfAKind = false;
             return returnString[4];
         } else {
             return "";
@@ -102,7 +97,6 @@ public class Hand {
 
     public String onePair() {
         if (getMatches(diceMatchNeeded = 2) == 1) {
-            OneOfAKind = false;
             return returnString[5];
         } else {
             return "";
